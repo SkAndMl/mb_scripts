@@ -6,7 +6,7 @@ PyPi : https://pypi.org/project/mb-scripts/
 
 ## Installing and using mb_scripts
 The package can be downloaded using `pip install mb-scripts==<latest_version>`<br><br>
-The latest version is **0.0.5**.<br><br>
+The latest version is **0.0.6**.<br><br>
 Once you have installed mb_scripts you can begin using it.<br><br> Here are some examples for using mb_scripts.<br><br>
 `plot_decision_boundary` is used to visually look at the decision boundary of classification functions<br><br>
 ![2022-04-25 (1)](https://user-images.githubusercontent.com/86184014/165075925-daa9cdf5-cbe0-41fe-85fa-39395d4cf027.png)<br><br>
