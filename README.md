@@ -1,4 +1,4 @@
-# mb-scripts
+![2022-04-25 (3)](https://user-images.githubusercontent.com/86184014/165095198-1f90196a-f4c5-42f5-92ed-60850a8386d5.png)<br>
 Creator : Sathya Krishnan Suresh<br>
 ## DESCRIPTION
 This is a python package to quicken the modelling and data analysis process.<br><br>
