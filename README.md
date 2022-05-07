@@ -29,11 +29,11 @@ monitoring overfitting when you are training a RandomForestClassifier model
 The package can be downloaded using `pip install mb-scripts==<latest_version>`<br><br>
 Latest version : **0.1.0**.<br><br>
 Once you have installed mb_scripts you can begin using it.<br><br> Here are some examples for using mb_scripts.<br><br>
+`train_validation_curve_for_rf` - used to monitor `RandomForestClassifier`'s overfitting
+![2022-05-07](https://user-images.githubusercontent.com/86184014/167239436-a77b2773-072e-4b66-b4ab-2b48089c9606.png)<br><br>
 `plot_decision_boundary` is used to visually look at the decision boundary of classification functions<br><br>
 ![2022-04-25 (1)](https://user-images.githubusercontent.com/86184014/165075925-daa9cdf5-cbe0-41fe-85fa-39395d4cf027.png)<br><br>
 `classifiers_metrics` returns a dataframe that consists of precision, recall, accuracy_score and f1_score for all the classification models passed.<br><br>
 ![2022-04-25 (2)](https://user-images.githubusercontent.com/86184014/165077324-b64aeb9f-170e-4630-a17e-5a0a9174a79e.png)<br><br>
-
-You can also find a couple of cnn image classification models in `mb_scripts.cnn_image_architecture`.<br>
 
 I am writing scripts regularly so the versions will keep changing for the next one month. Stay tuned.
