@@ -119,3 +119,13 @@ def base_models_cv(models,param_grids,X,y,cv=5):
             print(f"{j:{15}}{gs.best_params_[j]}")
         print(f"Best score: {gs.best_score_}")
         print("-------------------------------")
+
+def reduce_memory(data,memory_size_int=8,memory_size_float=16):
+    import numpy as np
+    import pandas as pd
+    for col in data.columns:
+        if str(data[col].dtype)[:1] == 'i':
+            data[col] = data[col].astype(np.int8)
+        elif str(data[col].dtype)[:1] == 'f':
+            data[col] = data[col].astype(np.float16)
+    return data
