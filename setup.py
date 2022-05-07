@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 with open("README.md") as f:
     long_description = f.read()
 
-VERSION = '0.0.7'
+VERSION = '0.1.0'
 DESCRIPTION = 'Machine Learning scripts that will quicken the modelling and data analysis process'
 
 # Setting up
