@@ -129,3 +129,4 @@ def reduce_memory(data,memory_size_int=8,memory_size_float=16):
         elif str(data[col].dtype)[:1] == 'f':
             data[col] = data[col].astype(np.float16)
     return data
+
