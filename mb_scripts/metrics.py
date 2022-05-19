@@ -241,3 +241,12 @@ def weighted_precision(y_true,y_pred):
         prec_classes.append(precision_c)
     prec_classes = np.array(prec_classes)
     return np.average(prec_classes,weights=len_classes)
+
+
+def log_loss(y_true,y_proba):
+    import numpy as np
+    losses = []
+    for yt,yp in zip(y_true,y_proba):
+        loss = -1*(yt*np.log(yp) + (1-yt)*np.log(1-yp))
+        losses.append(loss)
+    return np.mean(losses)
