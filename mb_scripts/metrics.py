@@ -250,3 +250,17 @@ def log_loss(y_true,y_proba):
         loss = -1*(yt*np.log(yp) + (1-yt)*np.log(1-yp))
         losses.append(loss)
     return np.mean(losses)
+
+def plot_loss_curves(history):
+  import matplotlib.pyplot as plt
+  import pandas as pd
+  df = pd.DataFrame(history.history)
+  epochs = range(len(df))
+  cols = list(df.columns)
+  fig,ax = plt.subplots(nrows=2,ncols=2,figsize=(10,10))
+  j = 0
+  for i in range(4):
+    if i>=2:
+      j = 1
+    ax[i%2][j].plot(epochs,df[cols[i]])
+    ax[i%2][j].set_title(cols[i],size=12)
