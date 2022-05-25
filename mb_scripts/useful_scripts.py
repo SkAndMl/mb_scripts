@@ -130,3 +130,10 @@ def reduce_memory(data,memory_size_int=8,memory_size_float=16):
             data[col] = data[col].astype(np.float16)
     return data
 
+def generate_time_series(batch_size,n_steps):
+  freq1,freq2,offset1,offset2 = np.random.rand(4,batch_size,1)
+  time = np.linspace(0,1,n_steps)
+  series = 0.5*np.sin((time-offset1)*(freq1*10+10))
+  series += 0.2*np.sin((time-offset2)*(freq2*20+20))
+  series += 0.1*(np.random.rand(batch_size,n_steps)-0.5)
+  return series[...,np.newaxis]
