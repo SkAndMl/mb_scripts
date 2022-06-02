@@ -6,13 +6,11 @@ from sklearn.feature_selection import f_regression
 from sklearn.feature_selection import mutual_info_regression
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import SelectPercentile
-from mb_scripts.useful_scripts import  train_test_split
-from sklearn import metrics
+from mb_scripts.useful_scripts import train_test_split
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-from sklearn.metrics import f1_score,mean_squared_error
+from sklearn.metrics import f1_score, mean_squared_error
 from itertools import combinations
 
 
@@ -37,7 +35,9 @@ class UnivariateFeatureSelection(TransformerMixin):
     def transform(self, X):
         return self.selection.transform(X)
 
+
 def plot_importance_rf(df, cols=None, type_of_problem="classification"):
+
     """
     This function is used to plot the importance of each feature for a given dataset using RandomForest.
     df -> dataset, type pandas.DataFrame
@@ -66,7 +66,7 @@ def plot_importance_rf(df, cols=None, type_of_problem="classification"):
     plt.barh(range(len(idxs)), imps[idxs])
     plt.yticks(range(len(idxs)), [cols[i] for i in idxs])
     plt.xlabel("RANDOM FOREST IMPORTANCE")
-    plt.show();
+    plt.show()
 
 
 class CombinationFeatureSelection:
