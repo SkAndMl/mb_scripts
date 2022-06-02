@@ -30,13 +30,15 @@ def plot_decision_boundary(classifier,X,y,resolution=0.02,markers=None,colors=No
     xx,yy = np.meshgrid(np.arange(x_min,x_max,resolution),
                         np.arange(y_min,y_max,resolution))  # creating a 2x2 array for the figure
 
+    y_unq = np.unique(y)    
     classifier = classifier.fit(X,y)
     Z = classifier.predict(np.c_[np.ravel(xx),np.ravel(yy)])
     Z = Z.reshape(xx.shape)
     plt.contourf(xx,yy,Z)  # the contour plot
+    
 
-    for i in np.unique(y):
-        plt.scatter(X[y==i,0],X[y==i,1],color=colors[i],marker=markers[i],label=i)
+    for i,j in enumerate(y_unq):
+        plt.scatter(X[y==j,0],X[y==j,1],color=colors[i],marker=markers[i],label=j)
 
     plt.legend()
     plt.show()
