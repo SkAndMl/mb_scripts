@@ -1,13 +1,14 @@
 from sklearn.base import TransformerMixin
 import numpy as np
 
+
 class PCA(TransformerMixin):
 
     def __init__(self, n_components=None):
         self.n_components = n_components  # dimension that the data has to be reduced to
 
     def fit(self, X):
-        if self.n_components == None:  # if the number of components is not mentioned keep the same dimension as the data
+        if self.n_components is None:  # if the number of components is not mentioned keep the same dimension as the data
             self.n_components = X.shape[1]
 
         self.cov_mat = np.cov(X.T)  # covariance matrix
@@ -27,3 +28,6 @@ class PCA(TransformerMixin):
 
     def transform(self, X):
         return X.dot(self.W)  # transforms a d-dimensional data into n_components-dimensional data.
+
+    def inverse_transform(self, X):
+        return X.dot(self.W.T)
