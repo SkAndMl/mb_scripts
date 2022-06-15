@@ -52,20 +52,21 @@ class LDA(TransformerMixin):
         return S_W
 
     def _between_class(self, X, y):
-        d = X.shape[1]
+        self.d = X.shape[1]
         mean_overall = np.mean(X, axis=0)
-        S_B = np.zeros(shape=(d, d))
+        S_B = np.zeros(shape=(self.d, self.d))
         for label, mean_vec in zip(np.unique(y), self.mean_vectors):
             n = len(X[y == label])
-            mean_vec = mean_vec.reshape(d, 1)
+            mean_vec = mean_vec.reshape(self.d, 1)
             S_B += n * (mean_vec - mean_overall).dot((mean_vec - mean_overall).T)
         return S_B
 
     def _compute_eigen_pairs(self):
+
         eigen_vals, eigen_vecs = np.linalg.eig(np.linalg.inv(self.S_W).dot(self.S_B))
         eigen_pairs = [(eigen_vals[i], eigen_vecs[i]) for i in range(len(eigen_vals))]
         self.eigen_pairs = sorted(eigen_pairs, key=lambda k: k[0], reverse=True)
-        self.transform_matrix = np.empty(shape=(d, self.n_components))
+        self.transform_matrix = np.empty(shape=(self.d, self.n_components))
         for i in range(self.n_components):
             self.transform_matrix[:, i] = self.eigen_pairs[i][1]
 
