@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 with open("README.md") as f:
     long_description = f.read()
 
-VERSION = '0.1.0'
+VERSION = '0.1.1'
 DESCRIPTION = 'Machine Learning scripts that will quicken the modelling and data analysis process'
 
 # Setting up
@@ -27,7 +27,7 @@ setup(
     ],  # add any additional packages that
     # needs to be installed along with your package. Eg: 'caer'
 
-    keywords=['python', 'mb_scripts','machine learning','data science','data analysis'],
+    keywords=['python', 'mb_scripts','machine learning','data science','data analysis','deep learning'],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Intended Audience :: Developers",
