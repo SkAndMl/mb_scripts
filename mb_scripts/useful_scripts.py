@@ -18,7 +18,7 @@ def train_test_split(X,y,test_size=0.2,random_state=42):
     np.random.seed(random_state)
     shuffled_index = np.random.permutation(len(X))
     train_indices = shuffled_index[:int(len(X)*(1-test_size))]
-    test_indices = shuffled_index[int(len(X)*test_size):]
+    test_indices = shuffled_index[int(len(X)*(1-test_size)):]
     if type(X)==type(pd.DataFrame(data={1:[2,3]})):
         X_train,X_test,y_train,y_test = X.iloc[train_indices],X.iloc[test_indices],y.iloc[train_indices],y.iloc[test_indices]
         return X_train, X_test, y_train, y_test
