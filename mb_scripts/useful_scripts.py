@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 from .metrics import precision_binary,recall_binary,accuracy_score,f1_score
 
 def train_test_split(X,y,test_size=0.2,random_state=42):
@@ -137,3 +138,23 @@ def generate_time_series(batch_size,n_steps):
   series += 0.2*np.sin((time-offset2)*(freq2*20+20))
   series += 0.1*(np.random.rand(batch_size,n_steps)-0.5)
   return series[...,np.newaxis]
+
+
+def split_data_into_files(data,file_prefix,dir_name="dataset",n_files=10):
+    
+  path = os.path.join(os.curdir,dir_name)
+  if os.path.exists(path=path):
+        pass
+  else:
+        os.mkdir(path=path)
+        print("\nNew directory created")
+
+  filepaths = []
+  for i in range(n_files):
+        lower_bound = int(i*len(data)/n_files)
+        upper_bound = int((i+1)*len(data)/n_files)
+        data_temp = data.iloc[lower_bound:upper_bound].copy()
+        data_temp.to_csv(f"{path}/{file_prefix}_{i}.csv",index=False)
+        filepaths.append(f"{path}/{file_prefix}_{i}.csv")
+    
+  return filepaths
