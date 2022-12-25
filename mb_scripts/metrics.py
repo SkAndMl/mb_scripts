@@ -251,6 +251,16 @@ def log_loss(y_true,y_proba):
         losses.append(loss)
     return np.mean(losses)
 
+
+def mean_absolute_scaled_error(y_true, y_pred):
+    """
+    Implemenation of mean absolute scaled error.
+    MASE is a metric used for time series predictions.
+    """
+    numerator = np.mean(np.absolute(y_true-y_pred))
+    denominator = np.mean(np.absolute(y_true[1:]-y_true[:-1]))
+    return numerator/denominator
+
 def plot_loss_curves(history):
   import matplotlib.pyplot as plt
   import pandas as pd
@@ -264,3 +274,18 @@ def plot_loss_curves(history):
       j = 1
     ax[i%2][j].plot(epochs,df[cols[i]])
     ax[i%2][j].set_title(cols[i],size=12)
+
+def evaluate_preds(y_true, y_pred):
+    import numpy as np
+    """
+    Function to evaluate time series predictions
+    Calculates mae, mse, rmse, mape and mase and returns 
+    dictionary format
+    """
+    eval_dict = {}
+    eval_dict['mae'] = np.mean(np.absolute(y_true-y_pred))
+    eval_dict['mse'] = np.mean(np.absolute(y_true-y_pred)**2)
+    eval_dict['rmse'] = np.sqrt(eval_dict['mse'])
+    eval_dict['mase'] = eval_dict['mae']/np.mean(np.absolute(y_true[1:]-y_true[:-1]))
+    eval_dict['mape'] = np.mean(np.absolute(y_true-y_pred)/y_true)
+    return eval_dict
