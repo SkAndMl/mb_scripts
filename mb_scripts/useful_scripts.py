@@ -240,3 +240,50 @@ def strat_kfold_results(models,X,y,n_splits=5,voting=True):
             print(f"MODEL: {model.__class__.__name__} ROC SCORE: {roc_score} ")
            
         fold+=1
+
+def window_data(data, window=7, horizon=1, name='s'):
+    import numpy as np
+    """
+    Function to window data
+    
+    Parameters
+    -------------
+    window - dimensionality of the timesteps
+    horizon - number of instances to predict using 
+              past window size timesteps
+    name - ['s', 'e'] 
+            's' is for windowing the data using a 
+            sliding window
+            'e' is for windowing the data using an
+            expanding window
+
+    Returns: X - np.array of shape [None, window]
+             y - np.array of shape [None, horizon]
+    """
+    if len(data)-window-horizon+1 < 0:
+        raise ValueError("Either the window or the horizon is too large \
+                          for the given data")
+
+
+    if name == 's':
+        X = np.empty(shape=(len(data)-window-horizon+1,window))
+        y = np.empty(shape=(len(data)-window-horizon+1, horizon))
+    
+
+        for i in range(0,len(X),1):
+            X[i,:] = data[i:i+window]
+            y[i,:] = data[i+window:i+window+horizon]
+
+        return X,y
+
+    elif name == 'e':
+        X = []
+        y = np.empty(shape=(len(data)-window-horizon+1, horizon))
+
+        for i in range(0,len(y),1):
+            X.append(data[:i+window])
+            y[i,:] = data[i+window:i+window+horizon]
+        return X,y
+    else:
+        raise ValueError("Wrong kind of method passed")
+
