@@ -23,7 +23,10 @@ variations.
 
 
 ## Installing and using mb_scripts
-The package can be downloaded using `pip install mb-scripts==<latest_version>`<br><br>
+The package can be downloaded using 
+```bash
+pip install mb-scripts==<latest_version>
+```
 Latest version : **0.1.0**.<br><br>
 Once you have installed mb_scripts you can begin using it.<br><br> Here are some examples for using mb_scripts.<br><br>
 `train_validation_curve_for_rf` - used to monitor `RandomForestClassifier`'s overfitting
